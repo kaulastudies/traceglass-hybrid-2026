@@ -11,13 +11,14 @@
 | Source metadata | PASS (unit) | Installed SDK lowercase values normalized; unknown metadata stays UNKNOWN |
 | Error denominator | PASS | Infrastructure errors reported separately from judged outputs |
 | UI behavior | PASS (JSDOM) | Production bundle renders 8 cases; scorer controls do not inflate run counts; missing configuration blocks calls |
-| Physical browser/rendering | NOT RUN | JSDOM is not a screenshot or actual Chrome validation |
-| New Firebase project/App Check | BLOCKED | Dedicated service project and configuration not provisioned |
+| Physical Chrome interaction | PASS (limited) | Deployed page loaded; scorer accepted 8/8 references and rejected 8/8 unsupported answers; cloud mode without consent blocked; live attempts stayed zero |
+| New Firebase project/web app | CREATED | traceglass-hybrid-2026, TraceGlass Web, free Spark plan; user completed project creation |
+| AI Logic/App Check | PENDING | Separate Gemini Developer API terms awaiting confirmation at Enable API; App Check setup remains |
 | On-device model | NOT RUN | Real device-model availability and generation unverified |
 | Cloud model | NOT RUN | No live inference requests or charges initiated |
 | Source authenticity | UNVERIFIED | Exports are unsigned client-side records; not independent attestations |
-| Deployment | NOT RUN | No hosting integration or production deployment configured |
-| Hackathon registration | INCOMPLETE | Form prepared; account-status answer and terms acceptance still needed |
-| Hackathon submission | NOT SUBMITTED | Live evidence, demo video and complete entry remain required |
+| Deployment | PASS (scorer only) | https://kaulastudies.github.io/traceglass-hybrid-2026/ ; new repository Pages from feature branch /docs, HTTPS |
+| Hackathon registration | REGISTERED | Devpost confirmed registration; TraceGlass Hybrid project draft created |
+| Hackathon submission | DRAFT SAVED, NOT SUBMITTED | Project story, links and additional info saved; submit screen reached; live evidence and demo video pending |
 
 Commands: `npm run build && npm test`. UI tests require the current build. Tests use original controls and a DOM simulator; they do not demonstrate runtime use of a model. API compatibility was checked against the installed package declarations and Firebase's current documentation.
