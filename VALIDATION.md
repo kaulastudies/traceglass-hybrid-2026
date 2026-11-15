@@ -13,7 +13,8 @@
 | UI behavior | PASS (JSDOM) | Production bundle renders 8 cases; scorer controls do not inflate run counts; missing configuration blocks calls |
 | Physical Chrome interaction | PASS (limited) | Deployed page loaded; scorer accepted 8/8 references and rejected 8/8 unsupported answers; cloud mode without consent blocked; live attempts stayed zero |
 | New Firebase project/web app | CREATED | traceglass-hybrid-2026, TraceGlass Web, free Spark plan; user completed project creation |
-| AI Logic/App Check | PENDING | Separate Gemini Developer API terms awaiting confirmation at Enable API; App Check setup remains |
+| AI Logic | ENABLED | User approved Gemini terms; setup completed on Spark; optional AI monitoring left off |
+| App Check | PENDING | Provider registration requires a new reCAPTCHA Enterprise Web key; its Google Cloud agreement is awaiting confirmation; enforcement is not disabled |
 | On-device model | NOT RUN | Real device-model availability and generation unverified |
 | Cloud model | NOT RUN | No live inference requests or charges initiated |
 | Source authenticity | UNVERIFIED | Exports are unsigned client-side records; not independent attestations |

@@ -1,5 +1,5 @@
 import { initializeApp } from 'firebase/app';
-import { initializeAppCheck, ReCaptchaV3Provider } from 'firebase/app-check';
+import { initializeAppCheck, ReCaptchaEnterpriseProvider } from 'firebase/app-check';
 import { getAI, getGenerativeModel, GoogleAIBackend, InferenceMode } from 'firebase/ai';
 import { assertMode, normalizeSource } from './core.js';
 
@@ -14,7 +14,7 @@ export function createRunner(mode, consent, progress=()=>{}) {
   if(!ai) {
     const app=initializeApp({apiKey:import.meta.env.VITE_FIREBASE_API_KEY,projectId:import.meta.env.VITE_FIREBASE_PROJECT_ID,appId:import.meta.env.VITE_FIREBASE_APP_ID},'traceglass-hybrid');
     if(import.meta.env.DEV && ['localhost','127.0.0.1'].includes(location.hostname) && import.meta.env.VITE_APPCHECK_DEBUG==='true') self.FIREBASE_APPCHECK_DEBUG_TOKEN=true;
-    initializeAppCheck(app,{provider:new ReCaptchaV3Provider(import.meta.env.VITE_RECAPTCHA_SITE_KEY),isTokenAutoRefreshEnabled:true});
+    initializeAppCheck(app,{provider:new ReCaptchaEnterpriseProvider(import.meta.env.VITE_RECAPTCHA_SITE_KEY),isTokenAutoRefreshEnabled:true});
     ai=getAI(app,{backend:new GoogleAIBackend()});
   }
   const model=getGenerativeModel(ai,{mode:InferenceMode[mode],inCloudParams:{model:CLOUD_MODEL,generationConfig:{temperature:0,maxOutputTokens:256}}});

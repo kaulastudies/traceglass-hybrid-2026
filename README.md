@@ -2,13 +2,15 @@
 
 Compare how on-device and cloud AI handle the same evidence-grounded support tasks. TraceGlass asks whether a fictional support ticket is resolved, unresolved, or unknown, then independently checks both the answer and its supporting record IDs.
 
-This is an independent new project. It has no deployment integration, repository history, credentials or runtime connection to any existing project.
+This is an independent new project with its own repository, Firebase project and GitHub Pages deployment. It does not connect to existing project runtimes or credentials.
 
 ## Current status
 
 Implemented: eight original synthetic controls, strict output grading, Firebase AI Logic runtime adapter, device-only and cloud-capable modes, explicit cloud consent, per-attempt evidence export, and a responsive browser interface. `npm run build` passes. Local verification is documented in `VALIDATION.md`.
 
-Not yet verified: real Firebase/App Check setup, on-device inference, cloud inference, browser rendering on a physical device, public deployment, or hackathon submission. No model performance results or prize claims are made.
+The [deployed scorer demo](https://kaulastudies.github.io/traceglass-hybrid-2026/) was checked in Chrome: eight reference answers accepted, eight unsupported answers rejected, and cloud mode blocked without consent. Firebase project `traceglass-hybrid-2026` and the TraceGlass Web app are created; Gemini Developer API setup is complete on the free Spark plan. BuildHybridAI registration and the Devpost draft are saved.
+
+Still pending: App Check provider registration, live on-device/cloud inference, the demo video and final submission. The hosted build currently runs scorer controls only. No model performance results or prize claims are made.
 
 ## Run
 
@@ -27,7 +29,7 @@ Open http://127.0.0.1:8793. The scorer-control check works without credentials. 
 
 1. Create a new Firebase project dedicated to TraceGlass. Never select an existing Lab, ProofPay or other service project.
 2. Enable Firebase AI Logic with the Gemini Developer API and keep App Check enforced.
-3. Register a web app and configure the reCAPTCHA v3 App Check provider for its dedicated origin.
+3. Register a web app and configure the reCAPTCHA Enterprise App Check provider. Create a score-based Web key in the same new project and allow only the app's hosting domain; do not allow localhost on the production key. Keep the default risk threshold and token lifetime.
 4. Copy `.env.example` to `.env.local`; enter only the new app's web configuration and site key. No service-account or Gemini secret belongs in this client application.
 5. For localhost development, set `VITE_APPCHECK_DEBUG=true` and register the generated debug token in the new project's App Check settings. Do not publish the token or a debug build. Production ignores this flag.
 6. Follow the official [hybrid web setup](https://firebase.google.com/docs/ai-logic/hybrid/web/get-started) for the Chrome model. Browser flags, downloads and restarts are user-controlled.
